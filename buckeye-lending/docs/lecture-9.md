@@ -1,6 +1,6 @@
 # Lecture 9 Lecture Concepts
 
-## Implementing the Review Queue
+## Implementing the Queueing Entities
 
 ### Step 1: ReviewQueue Model
 
@@ -91,7 +91,7 @@ Migrations are a powerful feature of EF Core that allow us to evolve our databas
 
 ---
 
-## Controller Update
+## Controller Skeleton
 
 Create `Controllers/ReviewQueueController.cs`:
 
