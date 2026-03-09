@@ -9,7 +9,7 @@ Create `Models/ReviewQueue.cs`:
 ```csharp
 using System.ComponentModel.DataAnnotations;
 
-namespace BuckeyeLending.Models;
+namespace Buckeye.Lending.Api.Models;
 
 public class ReviewQueue
 {
@@ -36,7 +36,7 @@ Create `Models/ReviewItem.cs`:
 ```csharp
 using System.ComponentModel.DataAnnotations;
 
-namespace BuckeyeLending.Models;
+namespace Buckeye.Lending.Api.Models;
 
 public class ReviewItem
 {
@@ -93,16 +93,34 @@ Migrations are a powerful feature of EF Core that allow us to evolve our databas
 
 ## Controller Skeleton
 
+Create `Dtos/ReviewQueueRequests.cs`:
+
+```csharp
+namespace Buckeye.Lending.Api.Dtos;
+
+public class AddToQueueRequest
+{
+    public int LoanApplicationId { get; set; }
+    public int Priority { get; set; } = 3;
+}
+
+public class UpdateItemRequest
+{
+    public int Priority { get; set; }
+    public string? Notes { get; set; }
+}
+```
+
 Create `Controllers/ReviewQueueController.cs`:
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using BuckeyeLending.Data;
-using BuckeyeLending.Models;
-using BuckeyeLending.Dtos;
+using Buckeye.Lending.Api.Data;
+using Buckeye.Lending.Api.Models;
+using Buckeye.Lending.Api.Dtos;
 
-namespace BuckeyeLending.Controllers;
+namespace Buckeye.Lending.Api.Controllers;
 
 [ApiController]
 [Route("api/review-queue")]
